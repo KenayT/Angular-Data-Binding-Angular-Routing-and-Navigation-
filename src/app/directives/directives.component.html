@@ -1,0 +1,71 @@
+<div class="directives-container">
+  <header class="directives-header">
+    <h1><i class="fas fa-cogs"></i> Angular Directives</h1>
+    <p class="subtitle">Master the building blocks of dynamic Angular applications</p>
+  </header>
+
+  <section class="directives-intro">
+    <div class="card">
+      <h2>What are Directives?</h2>
+      <p>Directives are special markers in the DOM that tell Angular's compiler to attach behavior to elements or transform the DOM. They extend HTML with custom attributes and elements, enabling dynamic, interactive UIs.</p>
+      <ul>
+        <li><strong>Component Directives:</strong> Custom elements like &lt;app-my-component&gt;.</li>
+        <li><strong>Structural Directives:</strong> Change the DOM layout (e.g., *ngIf, *ngFor).</li>
+        <li><strong>Attribute Directives:</strong> Change element appearance or behavior (e.g., ngClass, ngStyle).</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="directives-examples">
+    <div class="card">
+      <h2>Examples in Action</h2>
+      <button class="toggle-btn" (click)="showExamples = !showExamples">
+        <i class="fas fa-eye"></i> {{ showExamples ? 'Hide' : 'Show' }} Examples
+      </button>
+      <div *ngIf="showExamples" class="examples-content">
+        <div class="example">
+          <h3>*ngIf Directive</h3>
+          <p>Conditionally renders content based on a boolean expression.</p>
+          <div class="demo">
+            <input type="checkbox" [(ngModel)]="isVisible" id="ngIf-toggle">
+            <label for="ngIf-toggle">Toggle Visibility</label>
+            <p *ngIf="isVisible" class="demo-output">This text appears when checked!</p>
+          </div>
+        </div>
+        <div class="example">
+          <h3>*ngFor Directive</h3>
+          <p>Repeats a template for each item in a collection.</p>
+          <div class="demo">
+            <ul>
+              <li *ngFor="let item of items; trackBy: trackByFn">{{ item }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="directives-works">
+    <div class="alert success">
+      <i class="fas fa-check-circle"></i>
+      <p>Directives works!</p>
+      <small>This component demonstrates Angular directives in a real-world setup.</small>
+    </div>
+  </section>
+
+  <section class="directives-best-practices">
+    <div class="card">
+      <h2>Best Practices</h2>
+      <ul>
+        <li>Use structural directives sparingly to avoid complex DOM manipulations.</li>
+        <li>Prefer attribute directives for styling changes to keep components clean.</li>
+        <li>Test directives thoroughly, as they can affect performance.</li>
+        <li>Resources: <a href="https://angular.io/guide/directives" target="_blank">Angular Docs</a> | <a href="https://www.npmjs.com/package/@angular/core" target="_blank">NPM Package</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="directives-footer">
+    <p>Built with Angular & Node.js. © 2023 Your App</p>
+  </footer>
+</div>

@@ -1,0 +1,34 @@
+<!-- Updated HTML for Data Binding page -->
+<div class="data-binding-container">
+  <h1 class="page-title">{{ studentName }}</h1>
+
+  <section class="binding-section">
+    <h2 class="section-title">Property Binding</h2>
+    <div class="content-card">
+      <img [src]="imageUrl" alt="Student Image" class="binding-image" />
+      <br><br />
+      <button [disabled]="isDisabled" class="action-button">Submit</button>
+    </div>
+  </section>
+
+  <section class="binding-section">
+    <h2 class="section-title">Class Binding</h2>
+    <div class="content-card">
+      <p [class.passing]="isPassing" [class.failing]="!isPassing" class="result-text">
+        Student Result: {{ isPassing ? 'Passed' : 'Failed' }}
+      </p>
+    </div>
+  </section>
+
+  <section class="binding-section">
+    <h2 class="section-title">Style Binding</h2>
+    <div class="content-card">
+      <div 
+        [style.background]="boxColor"
+        [style.width]="boxSize"
+        [style.height]="boxSize"
+        class="dynamic-box">
+      </div>
+    </div>
+  </section>
+</div>

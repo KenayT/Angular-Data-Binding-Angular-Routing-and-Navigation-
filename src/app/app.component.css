@@ -1,0 +1,111 @@
+/* CSS Variables for easy theming (updated palette) */
+:root {
+  --primary-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Cool blue-to-purple gradient */
+  --nav-bg: rgba(0, 0, 0, 0.8); /* Semi-transparent dark overlay */
+  --link-color: #ffffff; /* White text */
+  --link-hover-color: #ff6b6b; /* Vibrant coral-red for hover */
+  --active-color: #4ecdc4; /* Cyan-teal for active state */
+  --glow-color: rgba(255, 107, 107, 0.5); /* Soft red glow for hover */
+  --transition-speed: 0.4s; /* Slightly longer for smoother feel */
+  --font-family: 'Roboto', sans-serif; /* Modern font */
+}
+
+/* Container for the nav (adds padding, centering, and subtle background animation) */
+.nav-container {
+  background: var(--primary-bg);
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: bgShift 10s ease-in-out infinite; /* Optional: Slow background color shift for dynamism */
+}
+
+/* Keyframe for background animation (creates a subtle "breathing" effect) */
+@keyframes bgShift {
+  0%, 100% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+  50% { background: linear-gradient(135deg, #764ba2 0%, #667eea 100%); }
+}
+
+/* Main nav bar */
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--nav-bg);
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  backdrop-filter: blur(10px);
+  transition: box-shadow var(--transition-speed) ease; /* Smooth shadow transition on hover */
+}
+
+/* Individual nav links (buttons) */
+.nav-link {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  margin: 0 0.5rem;
+  color: var(--link-color);
+  text-decoration: none;
+  font-family: var(--font-family);
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  transition: all var(--transition-speed) ease; /* Smooth transitions for color, transform, etc. */
+  border-radius: 25px;
+  cursor: pointer;
+  opacity: 0.9; /* Slight initial fade for depth */
+}
+
+/* Enhanced hover effect: Enlarge (scale up), rotate slightly, color change, glow, and underline */
+.nav-link:hover {
+  color: var(--link-hover-color);
+  transform: scale(1.1) rotate(1deg); /* More pronounced enlarge + subtle tilt for "cool" motion */
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 15px var(--glow-color); /* Soft glow effect */
+  opacity: 1; /* Full opacity on hover */
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--link-hover-color);
+  transition: width var(--transition-speed) ease, left var(--transition-speed) ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Active state (from routerLinkActive) */
+.nav-link.active {
+  color: var(--active-color);
+  background: rgba(78, 205, 196, 0.2);
+  transform: scale(1.05); /* Slight persistent scale */
+  box-shadow: 0 0 10px rgba(78, 205, 196, 0.3); /* Subtle active glow */
+}
+
+/* Focus state for accessibility */
+.nav-link:focus {
+  outline: 2px solid var(--link-hover-color);
+  outline-offset: 2px;
+}
+
+/* Responsive design: Stack links vertically on small screens */
+@media (max-width: 768px) {
+  .main-nav {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .nav-link {
+    margin: 0.25rem 0;
+    padding: 1rem;
+    font-size: 1.1rem;
+  }
+  .nav-link:hover {
+    transform: scale(1.05) rotate(0deg); /* Reduce effects on mobile for usability */
+  }
+}
